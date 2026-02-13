@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Student Form</title>
+
+<script>
+function submitform() {
+  let name = document.getElementById("name").value;
+  let email = document.getElementById("email").value;
+  let rollno = document.getElementById("Rollno").value;
+  let mobile = document.getElementById("Mobile").value;
+  let department = document.getElementById("Department").value;
+  let address = document.getElementById("Address").value;
+  let password = document.getElementById("Password").value;
+  let gender1 = document.getElementById("gender1").checked;
+  let gender2 = document.getElementById("gender2").checked;
+  if (name == "") {
+    alert("Name is required");
+    return;
+  }
+
+  if (rollno == "") {
+    alert("Roll Number is required");
+    return;
+  }
+
+  if (email == "") {
+    alert("Email is required");
+    return;
+  }
+
+  if (mobile.length != 10 || isNaN(mobile)) {
+    alert("Mobile number must be 10 digits");
+    return;
+  }
+
+  if (!gender1 && !gender2) {
+    alert("Please select gender");
+    return;
+  }
+  if (department == "") {
+    alert("Select department");
+    return;
+  }
+  if (password.length < 8) {
+    alert("Password must be at least 8 characters");
+    return;
+  }
+
+  if (!/[a-zA-Z]/.test(password)) {
+    alert("Password must contain a letter");
+    return;
+  }
+
+  if (!/[0-9]/.test(password)) {
+    alert("Password must contain a number");
+    return;
+  }
+
+  if (address.trim() == "") {
+    alert("Address is required");
+    return;
+  }
+
+  alert("Form Submitted Successfully!");
+}
+
+function resetform() {
+  document.getElementById("studentForm").reset();
+}
+</script>
+</head>
+
+<body>
+<center>
+<div style="margin:50px">
+<form id="studentForm">
+<table>
+<tr><td>Name</td><td><input type="text" id="name"></td></tr>
+<tr><td>Email</td><td><input type="text" id="email"></td></tr>
+<tr><td>Roll Number</td><td><input type="text" id="Rollno"></td></tr>
+<tr><td>Age</td><td><input type="number" id="age"></td></tr>
+<tr><td>Mobile</td><td><input type="tel" id="Mobile"></td></tr>
+<tr>
+<td>Department</td>
+<td>
+<select id="Department">
+  <option value="">--Select--</option>
+  <option>CSD</option>
+  <option>CSE</option>
+  <option>EEE</option>
+  <option>ECE</option>
+  <option>IT</option>
+  <option>MECH</option>
+  <option>FT</option>
+  <option>MTS</option>
+</select>
+</td>
+</tr>
+
+<tr>
+<td>Gender</td>
+<td>
+<input type="radio" id="gender1" name="Gender">Male
+<input type="radio" id="gender2" name="Gender">Female
+</td>
+</tr>
+
+<tr>
+<td>Address</td>
+<td><textarea id="Address"></textarea></td>
+</tr>
+
+<tr>
+<td>Password</td>
+<td><input type="password" id="Password"></td>
+</tr>
+
+<tr>
+<td><button type="button" onclick="resetform()">Reset</button></td>
+<td><button type="button" onclick="submitform()">Submit</button></td>
+</tr>
+
+</table>
+</form>
+</div>
+</center>
+</body>
+</html>
