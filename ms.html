@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Interactive Event Handling App</title>
+
+  <style>
+    body {
+      font-family: Arial;
+      text-align: center;
+      margin-top: 40px;
+    }
+    .box {
+      width: 250px;
+      height: 150px;
+      margin: 20px auto;
+      border: 3px solid black;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: lightgray;
+      transition: 0.3s;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      margin-top: 10px;
+      cursor: pointer;
+    }
+    input {
+      padding: 8px;
+      width: 250px;
+      margin-top: 15px;
+      font-size: 16px;
+    }
+    p {
+      font-weight: bold;
+      margin-top: 15px;
+    }
+  </style>
+</head>
+<body>
+  <h2>Simple Interactive Event Handling Application</h2>
+  <div class="box" id="eventBox">
+    Hover or Click Me
+  </div>
+  <button id="clickBtn">Click Button</button>
+  <br>
+  <input type="text" id="textInput" placeholder="Type something...">
+  <p id="output">Event output will appear here</p>
+  <script>
+    const box = document.getElementById("eventBox");
+    const button = document.getElementById("clickBtn");
+    const input = document.getElementById("textInput");
+    const output = document.getElementById("output");
+    box.addEventListener("mouseover", () => {
+      box.style.backgroundColor = "lightblue";
+      output.innerText = "Mouse is over the box";
+    });
+    box.addEventListener("mouseout", () => {
+      box.style.backgroundColor = "lightgray";
+      output.innerText = "Mouse left the box";
+    });
+    box.addEventListener("dblclick", () => {
+      box.style.backgroundColor = "orange";
+      output.innerText = "Box was double clicked!";
+    });
+    button.addEventListener("click", () => {
+      output.innerText = "Button was clicked!";
+    });
+    input.addEventListener("keyup", (event) => {
+      output.innerText = "You typed: " + event.target.value;
+    });
+  </script>
+</body>
+</html>
